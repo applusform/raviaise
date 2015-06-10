@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MOML version="1.1.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.applusform.com/xsd/moml_ui_1.1.8.xsd" >
+	<THEMES>
+		<THEME id="text" fontFace="/res/UnGraphic.ttf"/>
+		<THEME id="menuLabel" parent="text" layout="auto,110" fontSize="40" minFontSize="-1" textAlign="vCenter|right" textColor="#ffffff" padding="0,0,20,0" onClick="function.goMenu(next.index)"/>
+		<THEME id="menuIcon" parent="text" layout="110,110" onClick="function.goMenu(caller.index)"/>
+	</THEMES>
+	<UILAYOUT portrait="720,1230" landscape="720,1230">
+		<WINDOW layout="0,0,720,1230" defaultImg="#ffffff" />
+		<AGATEWEBVIEW id="web" layout="0,0,720,1230" src="http://raviaise.modoo.at" supportZoom="true" controls="none">
+			<LINKMAP>
+				<LINK url="*" jsPlugin="modoo.js"/>
+				<LINK url="*" delay="1" onFinish="function.hideIntro"/>
+				<LINK url="https://m.search.naver.com/*" cmd="function.popupWeb" />
+				<LINK url="http://applusform.com/*" cmd="function.popupWeb" />
+				<LINK url="https://github.com/*" cmd="function.popupWeb" />
+				<LINK url="https://play.google.com/*" cmd="function.popupWeb" />
+				<LINK url="http://itunes.apple.com/*" cmd="function.popupWeb" />
+			</LINKMAP>
+		</AGATEWEBVIEW>
+
+		<WINDOW id="menuWindow" layout="0,0,720,1230" defaultImg="#d3000000" visible="invisible" onClick="none">
+			<WINDOW id="object0" layout="0,182,438,110" align="linear:right" visible="invisible">
+				<LABEL id="menuText0" themeId="menuLabel"/>
+				<WINDOW themeId="menuIcon" defaultImg="res/menu0.png" index="0" />
+			</WINDOW>
+			<WINDOW id="object1" layout="70,305,438,110" align="linear:right" visible="invisible">
+				<LABEL id="menuText1" themeId="menuLabel"/>
+				<WINDOW themeId="menuIcon" defaultImg="res/menu1.png" index="1" />
+			</WINDOW>
+			<WINDOW id="object2" layout="120,421,438,110" align="linear:right" visible="invisible">
+				<LABEL id="menuText2" themeId="menuLabel"/>
+				<WINDOW themeId="menuIcon" defaultImg="res/menu2.png" index="2" />
+			</WINDOW>
+			<WINDOW id="object3" layout="163,543,438,110" align="linear:right" visible="invisible">
+				<LABEL id="menuText3" themeId="menuLabel"/>
+				<WINDOW themeId="menuIcon" defaultImg="res/menu3.png" index="3" />
+			</WINDOW>
+			<WINDOW id="object4" layout="189,676,438,110" align="linear:right" visible="invisible">
+				<LABEL id="menuText4" themeId="menuLabel"/>
+				<WINDOW themeId="menuIcon" defaultImg="res/menu4.png" index="4" />
+			</WINDOW>
+			<WINDOW id="object5" layout="228,814,438,110" align="linear:right" visible="invisible">
+				<LABEL id="menuText5" themeId="menuLabel"/>
+				<WINDOW themeId="menuIcon" defaultImg="res/menu5.png" index="5" />
+			</WINDOW>
+			<WINDOW id="object6" layout="251,956,438,110" align="linear:right" visible="invisible">
+				<LABEL id="menuText6" themeId="menuLabel"/>
+				<WINDOW themeId="menuIcon" defaultImg="res/menu6.png" index="6" />
+			</WINDOW>
+		</WINDOW>
+
+		<BUTTON id="aniBtn" layout="580,1090,128,128" defaultImg="res/menu_normal.png" onClick="function.aniCheck" />
+
+		<WINDOW id="intro" layout="0,0,720,1230" defaultImg="#fe016ca0">
+			<!-- alpha color is needed for android webview rendering -->
+			<WINDOW layout="0,0,720sr,720sr" defaultImg="/res/logo.jpg" loadingEffect="fadeIn" />
+			<LABEL id="loading" layout="0,1100,720,auto" text="Loading..." fontSize="6pt" textColor="#ffffff" textAlign="hCenter"/>
+		</WINDOW>
+
+
+	</UILAYOUT>
+
+	<CMD cmd="animation.show('loading', 'fade', 'roundTrip3', 10000, '')" />
+	<CMD cmd="userVariable.menuCount = 7" />
+
+	<FUNCTION id="hideIntro">
+		<RETURN condition="intro.visible == 'invisible'"/>
+		<CMD cmd="animation.hide('intro', 'fade', '', 300, '')" delay="3000"/>
+	</FUNCTION>
+
+	<FUNCTION id="popupWeb(url)">
+		<CMD cmd="appLauncher.openUri(url, '')" />
+	</FUNCTION>
+
+	<FUNCTION id="goMenu(index)">
+		<CMD cmd="function.aniHide; web.postJavaScript('window.navigateMenu(' + (userVariable.menuCount - 7 + index) + ')')" />
+	</FUNCTION>
+
+
+	<FUNCTION id="aniCheck">
+		<CMD condition="aniBtn.defaultImg == 'res/menu_normal.png'" cmd="function.aniShow" elseCmd="function.aniHide" />
+	</FUNCTION>
+
+	<FUNCTION id="aniShow">
+		<CMD cmd="aniBtn.defaultImg = 'res/menu_close.png'" />
+		<CMD cmd="animation.show('menuWindow', 'fade', '', 700, '')" />
+		<CMD condition="menuText0.text" cmd="animation.show('object0', 'fade', '', 700, '')" />
+		<CMD condition="menuText0.text" cmd="animation.flyIn('object0', 252, 785, object1.width, object1.height, 'easeOut3|backOut7', 1000, '')" />
+		<CMD condition="menuText1.text" cmd="animation.show('object1', 'fade', '', 700, '')" />
+		<CMD condition="menuText1.text" cmd="animation.flyIn('object1', 252, 785, object1.width, object1.height, 'easeOut3|backOut7', 1000, '')" />
+		<CMD condition="menuText2.text" cmd="animation.show('object2', 'fade', '', 700, '')" />
+		<CMD condition="menuText2.text" cmd="animation.flyIn('object2', 178, 669, object2.width, object2.height, 'easeOut3|backOut7', 1000, '')" />
+		<CMD condition="menuText3.text" cmd="animation.show('object3', 'fade', '', 700, '')" />
+		<CMD condition="menuText3.text" cmd="animation.flyIn('object3', 109, 543, object1.width, object1.height, 'easeOut3|backOut7', 1000, '')" />
+		<CMD condition="menuText4.text" cmd="animation.show('object4', 'fade', '', 700, '')" />
+		<CMD condition="menuText4.text" cmd="animation.flyIn('object4', 63, 414, object1.width, object1.height, 'easeOut3|backOut7', 1000, '')" />
+		<CMD condition="menuText5.text" cmd="animation.show('object5', 'fade', '', 700, '')" />
+		<CMD condition="menuText5.text" cmd="animation.flyIn('object5', 24, 276, object1.width, object1.height, 'easeOut3|backOut7', 1000, '')" />
+		<CMD condition="menuText6.text" cmd="animation.show('object6', 'fade', '', 700, '')" />
+		<CMD condition="menuText6.text" cmd="animation.flyIn('object6', 1, 134, object1.width, object1.height, 'easeOut3|backOut7', 1000, '')" />
+	</FUNCTION>
+
+	<FUNCTION id="aniHide">
+		<CMD cmd="aniBtn.defaultImg = 'res/menu_normal.png'" />
+		<CMD cmd="animation.hide('menuWindow', 'fade', '', 300, '')" />
+		<CMD condition="menuText0.text" cmd="animation.hide('object0', 'fade', '', 300, '')" />
+		<CMD condition="menuText0.text" cmd="animation.flyOut('object0', 252, 785, object1.width, object1.height, 'easeOut7', 1000, '')" />
+		<CMD condition="menuText1.text" cmd="animation.hide('object1', 'fade', '', 300, '')" />
+		<CMD condition="menuText1.text" cmd="animation.flyOut('object1', 252, 785, object1.width, object1.height, 'easeOut7', 1000, '')" />
+		<CMD condition="menuText2.text" cmd="animation.hide('object2', 'fade', '', 300, '')" />
+		<CMD condition="menuText2.text" cmd="animation.flyOut('object2', 178, 669, object2.width, object2.height, 'easeOut7', 1000, '')" />
+		<CMD condition="menuText3.text" cmd="animation.hide('object3', 'fade', '', 300, '')" />
+		<CMD condition="menuText3.text" cmd="animation.flyOut('object3', 109, 543, object1.width, object1.height, 'easeOut7', 1000, '')" />
+		<CMD condition="menuText4.text" cmd="animation.hide('object4', 'fade', '', 300, '')" />
+		<CMD condition="menuText4.text" cmd="animation.flyOut('object4', 63, 414, object1.width, object1.height, 'easeOut7', 1000, '')" />
+		<CMD condition="menuText5.text" cmd="animation.hide('object5', 'fade', '', 300, '')" />
+		<CMD condition="menuText5.text" cmd="animation.flyOut('object5', 24, 276, object1.width, object1.height, 'easeOut7', 1000, '')" />
+		<CMD condition="menuText6.text" cmd="animation.hide('object6', 'fade', '', 300, '')" />
+		<CMD condition="menuText6.text" cmd="animation.flyOut('object6', 1, 134, object1.width, object1.height, 'easeOut7', 1000, '')" />
+	</FUNCTION>
+</MOML>
