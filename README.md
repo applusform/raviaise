@@ -2,8 +2,9 @@
 modoo!로 만든 홈페이지를 Hybrid App으로 만든 데모입니다.
 
 Screen shot :
+
 ![Screen shot](http://applusform.github.io/raviaise/screenshot1.png)
-![Screen shot](http://applusform.github.io/raviaise/screenshot1.png)
+![Screen shot](http://applusform.github.io/raviaise/screenshot2.png)
 
 #### APK 다운로드
 * [Release v1.0](https://github.com/applusform/raviaise/releases/download/v1.0/io.github.applusform.raviaise.apk)
