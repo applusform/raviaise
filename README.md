@@ -16,7 +16,7 @@ Screen shot :
 #### 온라인 앱 자동 빌드( .apk)
 1. http://apps.yooic.com 사이트 가입후 로그인합니다.
 2. **[프로젝트 생성]** 메뉴에서 앱타입으로 **[인스턴트 앱]**을 선택하고 **[다음]**을 누릅니다.
-3. **[MOML 어플리케이션 URL]**에 **applusform.github.io/raviaise**를 입력한 후 **[완료]**를 누릅니다.
+3. **[MOML 어플리케이션 URL]**에 **applusform.github.io/raviaise/applicationInfo.xml**를 입력한 후 **[완료]**를 누릅니다.
 4. **[내 프로젝트 관리]** 메뉴에서 APK **[생성]** 버튼을 누릅니다.
 
 #### 직접 빌드 ( .apk, .ipa )
