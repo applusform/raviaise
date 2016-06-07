@@ -99,7 +99,7 @@ function initMomlMenu() {
             var i;
             for (i = 0; i < lis.length && i < 7; ++i) {
                 var a = lis[i].getElementsByTagName("a")[0];
-                var text = a.innerText;
+                var text = a.innerText.trim();
                 agate.runScript("menuText" + (7 - menuCount + i) + ".text = '" + text + "'");
             }
         }
